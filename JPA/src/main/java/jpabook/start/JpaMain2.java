@@ -3,29 +3,31 @@ package jpabook.start;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.FlushModeType;
 import javax.persistence.Persistence;
 
 import jpabook.example.SampleMethod;
 
-public class JpaMain {
+public class JpaMain2 {
 
 	public static void main(String[] args) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPA");
 		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+		em.setFlushMode(FlushModeType.COMMIT);
+		EntityTransaction transaction = em.getTransaction();
 		
 		try {
-			tx.begin();
-			//logic(em);
+			transaction.begin();
+			
 			SampleMethod sample = new SampleMethod();
-			sample.example_3_4_1(em);
-			tx.commit();
+			sample.example_3_5_1(em);
+			
+			//transaction.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
-			tx.rollback();
+			transaction.rollback();
 		} finally {
 			em.close();
 		}
 	}
-
 }
