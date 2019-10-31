@@ -2,7 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="JPA">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<class>jpabook.start.Member</class>
+		<class>jpabook.model.entity.Member</class>
+		<class>jpabook.model.entity.Order</class>
+		<class>jpabook.model.entity.OrderItem</class>
+		<class>jpabook.model.entity.Item</class>
 		
 		
 		<properties>
@@ -17,7 +20,7 @@
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="hibernate.use_sql_comments" value="true"/>
 			<property name="hibernate.id.new_generator_mappings" value="true"/>
-			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 		</properties>
 	
 	
